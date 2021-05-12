@@ -1,0 +1,8 @@
+### GET
+GET http://localhost:3000 HTTP/1.1
+
+### DELETE
+GET http://localhost:3000/?name=Google&url=http://google.com&del=1 HTTP/1.1
+
+### POST | CREATE
+GET http://localhost:3000/?name=WooCommerce&url=http://woocommerce.com HTTP/1.1
