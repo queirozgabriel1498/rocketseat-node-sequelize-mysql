@@ -2,17 +2,38 @@ const ul = document.querySelector("ul")
 const input = document.querySelector("input")
 const form = document.querySelector('form')
 
-
-async function load() {
-    const res = await fetch("http://localhost:3000/").then((data) => data.json())
+// Load URLs in document.
+async function get_urls() {
+    const getUrls = await fetch("http://localhost:3000").then((data) => data.json());
     
-    res.urls.map(({name, url}) => addElement({name, url}))
+    getUrls.urls.map( ({name, url}) => writeUrl({name, url}) ); // Add all URLs.
 }
 
-load()
+get_urls()
+
+// Delete URLs in document and in data file.
+function delete_urls(name, url) {
+    // const deleteUrls = fetch(`http://localhost:3000/?name=${name}&url=${url}&del=1`).then((data) => data.json());
+    let i;
+    const urlToDelete = {
+        name: document.querySelectorAll('li a')[i].innerText,
+        url: document.querySelectorAll('li a')[i].href
+    }
+
+    /* for (i in urlToDelete) {
+        if (Object.hasOwnProperty.call(urlToDelete, index)) {
+            const element = urlToDelete[index];
+            
+        }
+    } */
+    
+    const query = `http://localhost:3000/?name=${name}&url=${url}&del=1`;
+    
+    return deleteUrls;
+}
 
 
-function addElement({ name, url }) {
+function writeUrl({ name, url }) {
     const li = document.createElement('li')
     const a = document.createElement("a")
     const trash = document.createElement("span")
@@ -31,6 +52,7 @@ function addElement({ name, url }) {
 
 function removeElement(el) {
     if (confirm('Tem certeza que deseja deletar?'))
+        delete_urls()
         el.parentNode.remove()
 }
 
@@ -50,7 +72,7 @@ form.addEventListener("submit", (event) => {
     if (!/^http/.test(url)) 
         return alert("Digite a url da maneira correta")
 
-    addElement({ name, url })
+    writeUrl({ name, url })
 
     input.value = ""
 })
