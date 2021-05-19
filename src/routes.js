@@ -9,6 +9,7 @@ routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
 // ADDRESSES
-routes.post('/users/:user_id/address', AddressController.store);
+routes.get('/users/:user_id/addresses', AddressController.index); // Get one address.
+routes.post('/users/:user_id/addresses', AddressController.store); // Post one address.
 
 module.exports = routes;

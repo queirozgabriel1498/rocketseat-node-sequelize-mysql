@@ -1,4 +1,4 @@
-const { Model, DataTypes, STRING } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
 class Address extends Model {
   static init(sequelize) {
@@ -10,6 +10,10 @@ class Address extends Model {
       },
       { sequelize }
     );
+  }
+
+  static associate(models) {
+    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
   }
 }
 
