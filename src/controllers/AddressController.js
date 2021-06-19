@@ -1,6 +1,5 @@
 const Address = require('../models/Address');
 const User = require('../models/User');
-const { index } = require('./UserControler');
 
 /**
  *Um endereço pertence a um usuário.
@@ -14,7 +13,7 @@ module.exports = {
       include: { association: 'addresses' },
     });
 
-    return res.json({ user });
+    return res.json(user.addresses);
   },
 
   async store(req, res) {
