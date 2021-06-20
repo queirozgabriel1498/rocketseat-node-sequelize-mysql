@@ -1,0 +1,22 @@
+# SEQUELIZE
+# MIGRATIONS
+
+* As Migrations funcionam como um controle de versão do banco de dados durante o tempo de vida da aplicação. 
+* O que é possível fazer com Migrations:
+  . Adicionar/alterar/remover tabelas;
+  . Adicionar/alterar/remover colunas;
+  . Adicionar/alterar/remover relacionamentos.
+  . ...
+
+________________________________________________________________
+
+# CRIANDO UMA MIGRATION
+  npx sequelize migration:create --name=nome-da-migration
+
+
+# EXECUTANDO UMA MIGRATION
+  npx sequelize db:migrate
+
+
+# DESFAZENDO A EXECUÇÃO DE UMA MIGRATION
+  npx sequelize db:migrate:undo
